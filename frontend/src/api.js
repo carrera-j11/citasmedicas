@@ -1,11 +1,15 @@
 import axios from 'axios';
 
-// URL base de la API (Render) o local si estás en desarrollo
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
+// URL base de la API:
+// - En producción: viene de VITE_API_BASE_URL (Vercel)
+// - En desarrollo: http://localhost:4000
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
 
 // Crear instancia de axios con la URL correcta
 const api = axios.create({
-  baseURL: API_BASE_URL,   // ⚠️ YA NO agregamos "/api" aquí
+  // El backend expone las rutas bajo /api ( /api/auth, /api/appointments, etc.)
+  baseURL: `${API_BASE_URL}/api`,
 });
 
 // Guardar o eliminar token del cliente
