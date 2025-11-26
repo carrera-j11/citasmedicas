@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000';
+// ⚠️ USAR SIEMPRE ESTA VARIABLE EN VITE + PRODUCCIÓN
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
 const api = axios.create({
-  baseURL: `${API_BASE_URL}/api`
+  baseURL: `${API_BASE_URL}/api`,
 });
 
+// Guardar o eliminar token del cliente
 export function setAuthToken(token) {
   if (token) {
     api.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -16,6 +18,7 @@ export function setAuthToken(token) {
   }
 }
 
+// Cargar token al iniciar la app
 export function loadTokenFromStorage() {
   const token = localStorage.getItem('token');
   if (token) {
