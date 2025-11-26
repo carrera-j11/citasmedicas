@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-// ⚠️ USAR SIEMPRE ESTA VARIABLE EN VITE + PRODUCCIÓN
+// URL base de la API (Render) o local si estás en desarrollo
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:4000';
 
+// Crear instancia de axios con la URL correcta
 const api = axios.create({
-  baseURL: `${API_BASE_URL}/api`,
+  baseURL: API_BASE_URL,   // ⚠️ YA NO agregamos "/api" aquí
 });
 
 // Guardar o eliminar token del cliente
