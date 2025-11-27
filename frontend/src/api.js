@@ -1,5 +1,4 @@
 import axios from 'axios';
-
 // URL base de la API:
 // - En producción: viene de VITE_API_BASE_URL (Vercel)
 // - En desarrollo: http://localhost:4000
